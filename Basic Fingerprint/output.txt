@@ -1,0 +1,32 @@
+Microsoft SEAL version: 3.4.5
+
++-----------------------------------------------------------+
+|         VC-FHE example, F(x, y) = (2 * X) + y + 3         |
++-----------------------------------------------------------+
+Our fingerprint values are F(3, 2) = 11
+Each part(side) has 6 bits allocated,
+
+Enter 2 values:
+4
+7
+
+We expect to get the fingerprint value of F(3, 2) = 11 at the LSB side
+We expect to get the user result of       F(4, 7) = 18 at the MSB side
+18 left shifted by 6 is 186
+After positioning the input values (4, 7) at Lsh 6 along with the fingerprint (3, 2) we get:
+=X IS: 259       binary: 000100 | 000011
+=Y IS: 450       binary: 000111 | 000010
+
+-Calculating (2*X)
+2 * X VC is: 518
+-Calculating Y + 3
+         Encrypted 450 will be added 3 and (3 Lsh 6) => +(3) +(192)
+         450 + 195= 645
+Y VC + 3 is: 645
+-Calculating (2*X) + Y+3
+(2*X) + Y+3 is: 1163
+## The final result is: 1163
+010010 | 001011
+MSB side is: 18 | LSB side is: 11
+We have recieved the correct result of the calculation of 18 at the left part !
+We have recieved the expected result of the fingerprint of 11 at the right part !

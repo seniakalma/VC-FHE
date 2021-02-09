@@ -1,0 +1,37 @@
++------------------------------------------------------------------------------+
+|         VC-FHE SIMD example, F(x, y) = (((2 * X) + 1) * (Y * 3)) + 5         |
++------------------------------------------------------------------------------+
+We have 4096 elements in our vector.
+Our fingerprint values are F(3, 2) = 47
+The fingerprint will reside in index 0 in the vector
+
+Input vector:
+
+    [ 3.0000000, 0.0000000, 0.0100000, ..., 40.9200000, 40.9300000, 40.9400000 ]
+
+
+    [ 2.0000000, 2.0000000, 2.0100000, ..., 42.9200000, 42.9300000, 42.9400000 ]
+
+
+We expect to get the fingerprint value of F(3, 2) = 47 at the index 0
+All shown calculation results are concerning only the fingerprint element
+
+-Calculating (2*X)
+2 * X is: 6
+-Calculating 2*X + 1
+2*X + 1 is: 7
+-Calculating Y * 3
+Y * 3 is: 6
+-Calculating (2*X)+1 * (Y*3)
+(2*X)+1 * (Y*3) is: 42
+-Calculating (2*X)+1*(Y*3) + 5
+(2*X) + Y+3 is: 47
+The true result, computed with regular arithmetics, is:
+
+    [ 47.0000000, 11.0000000, 11.1506000, ..., 10671.4784000, 10676.5394000, 10681.6016000 ]
+
+    + Computed FHE SIMD result:
+
+    [ 47.0000387, 11.0000048, 11.1506050, ..., 10671.4883960, 10676.5494007, 10681.6116055 ]
+
+The integer value of the fingerprint element (index 0) is 47 and it equals to the expected value of 47.
